@@ -2,7 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+//Name: Princewill Iroka
+//Student number: 991788185
+
 package card;
+
+import java.util.Scanner;
+import java.util.Random;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects
@@ -15,18 +22,35 @@ public class CardTrick {
     public static void main(String[] args)
     {
         Card[] magicHand = new Card[7];
+        String[] suits = {"Hearts", "Diamonds", "Spades", "Clubs"};
+        Random rand = new Random();
         
-        for (int i=0; i<magicHand.length; i++)
-        {
+        for (int i = 0; i < magicHand.length; i++) {
             Card c = new Card();
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            c.setValue(rand.nextInt(13) + 1);
+            c.setSuit(suits[rand.nextInt(suits.length)]);
+            magicHand[i] = c;
         }
         
-        //insert code to ask the user for Card value and suit, create their card
-        // and search magicHand here
-        //Then report the result here
-        // add one luckcard hard code 2,clubs
+        // Hard-coded luckyCard
+        Card luckyCard = new Card();
+        luckyCard.setValue(4);
+        luckyCard.setSuit("Hearts");
+
+        // Search for the luckyCard in magicHand
+        boolean found = false;
+        for (Card card : magicHand) {
+            if (card.getValue() == luckyCard.getValue() && card.getSuit().equalsIgnoreCase(luckyCard.getSuit())) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            System.out.println("Congratulations! Your card is in the magic hand!");
+        } else {
+            System.out.println("Sorry, your card is not in the magic hand.");
+        }
     }
     
 }
