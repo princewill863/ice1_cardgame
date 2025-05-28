@@ -32,20 +32,15 @@ public class CardTrick {
             magicHand[i] = c;
         }
         
-        Scanner input = new Scanner(System.in);
-        System.out.print("Pick a card value (1 to 13): ");
-        int userValue = input.nextInt();
-        input.nextLine();
-        System.out.print("Pick a suit (Hearts, Diamonds, Spades, Clubs): ");
-        String userSuit = input.nextLine();
-        
-        Card userCard = new Card();
-        userCard.setValue(userValue);
-        userCard.setSuit(userSuit);
-        
+        // Hard-coded luckyCard
+        Card luckyCard = new Card();
+        luckyCard.setValue(4);
+        luckyCard.setSuit("Hearts");
+
+        // Search for the luckyCard in magicHand
         boolean found = false;
         for (Card card : magicHand) {
-            if (card.getValue() == userCard.getValue() && card.getSuit().equalsIgnoreCase(userCard.getSuit())) {
+            if (card.getValue() == luckyCard.getValue() && card.getSuit().equalsIgnoreCase(luckyCard.getSuit())) {
                 found = true;
                 break;
             }
